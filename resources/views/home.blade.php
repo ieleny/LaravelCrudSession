@@ -30,7 +30,7 @@
 
         <br>
 
-        <a href="{{ url('create') }}" class="btn btn-success">Adicionar Nova Geladeira</a>
+        <a href="{{ url('adicionarGeladeira') }}" class="btn btn-success">Adicionar Nova Geladeira</a>
         
         <br><br>
 
@@ -49,7 +49,7 @@
                             <td>{{$Geladeira[$index]['codigo']}}</td>
                             <td>{{$Geladeira[$index]['nome']}}</td>
                             <td>
-                                <a href="{{ route('Geladeira.edit',['id'=>$index]) }}" class="btn btn-info">Adicionar Condimentos</a>
+                                <a href="{{ route('Condimentos.list',['id'=>$index]) }}" class="btn btn-info">Visualizar Condimentos</a>
                                 <a href="{{ route('Geladeira.edit',['id'=>$index]) }}" class="btn btn-success">Editar</a>
                                 <a href="{{ route('Geladeira.delete',['id'=>$index]) }}" class="btn btn-danger">Delete</a>
                             </td>
@@ -85,4 +85,4 @@
 
             
 
-@endsection
+    @endsection

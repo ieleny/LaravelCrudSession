@@ -31,30 +31,50 @@ class GeladeiraController extends Controller
         echo view('home',['Geladeira'=> $_SESSION['geladeira'],'alerta' => $nomeSucess])->render();
     }
 
-    // public function create(LoginRequest $request)
-    // {   
-    //     $input = $request->all();
-    //     LoginModel::create($input);
+    //Abrir tela de Adicionar Geladeira
+    public function addFridge()
+    {
+        echo view('adicionarGeladeira',['Geladeira'=> $_SESSION['geladeira'],'alerta' => false])->render();
+    }
 
-    //     return $this->index();
-    // }
+    //Criar uma nova geladeira
+    public function create(Request $request)
+    {   
+        array_push  (
+                        $_SESSION['geladeira'], 
+                        [
+                            'codigo'=>$request->get('codigo'),
+                            'nome'=> $request->get('nome')
+                        ]
+                    );
 
-    //Deletar uma lista
+        $this->returnSession('create');
+    }
+
+    //Deletar uma Geladeira
     public function delete($id)
     {   
         unset($_SESSION['geladeira'][$id]);
         return $this->returnSession('delete');
     }
 
+    //Enviar os dados para a tela
     public function edit($id)
     {
-        // $login = LoginModel::find($id);
-        // return view('edit',compact('login'));
+        $geladeira = array_merge($_SESSION['geladeira'][$id], ['id'=>$id]);
+        return view('editarGeladeira',compact('geladeira'));
     }
 
-    // public function update(LoginRequest $request, $id)
-    // {
-    //     LoginModel::find($id)->update($request->all());
-    //     return $this->index();
-    // }
+    //Editar os dados
+    public function update(Request $request, $id)
+    {
+
+        $_SESSION['geladeira'][$id] = 
+        [
+            'codigo'=>$request->get('codigo'),
+            'nome'=> $request->get('nome')
+        ];
+
+        return $this->returnSession('edit');
+    }
 }

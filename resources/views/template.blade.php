@@ -30,7 +30,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">GCDA</a>
+                    <a class="navbar-brand" href=" {{ url('/') }} ">GCDA</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -39,8 +39,7 @@
                     </ul> -->
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ url('/auth/login') }}">Adicionar Geladeira</a></li>
-                        <li><a href="{{ url('/auth/register') }}">Listar</a><li>  
+                        <li><a href="{{ url('/') }}">Listar</a><li>  
                     </ul>
                 </div>
 
